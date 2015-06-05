@@ -23,7 +23,7 @@ class logforward::config {
 
   $ssl_cert_path = "${::logforward::confdir}/${::logforward::ssl_cert}"
   file { $::logforward::ssl_cert:
-    path   => "${::logforward::confdir}/${::logforward::ssl_cert}"
+    path   => "${::logforward::confdir}/${::logforward::ssl_cert}",
     ensure => 'present',
     owner  => 'root',
     group  => $::logforward::params::root_group,
