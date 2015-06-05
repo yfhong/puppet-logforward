@@ -5,6 +5,8 @@
 class logforward::config {
 
   $aggregated_logs = hiera_array('logforward::aggregated_logs')
+  $ssl_cert_path = "${::logforward::confdir}/${::logforward::ssl_cert}"
+  $ssl_key_path = "${::logforward::params::confdir}/${::logforward::ssl_key}"
 
   file { $::logforward::confdir:
     ensure => 'directory',
@@ -21,7 +23,6 @@ class logforward::config {
     content => template('logforward/logstash-forwarder.conf.erb'),
   }
 
-  $ssl_cert_path = "${::logforward::confdir}/${::logforward::ssl_cert}"
   file { $::logforward::ssl_cert:
     path   => "${::logforward::confdir}/${::logforward::ssl_cert}",
     ensure => 'present',
@@ -31,7 +32,6 @@ class logforward::config {
     source => "puppet:///modules/logforward/${::logforward::ssl_cert}",
   }
 
-  $ssl_key_path = "${::logforward::params::confdir}/${::logforward::ssl_key}"
   file { $::logforward::ssl_key:
     path   => "${::logforward::confdir}/${::logforward::ssl_key}",
     ensure => 'present',
