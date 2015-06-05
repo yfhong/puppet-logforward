@@ -8,14 +8,16 @@
 #   Explanation of what this parameter affects and what it defaults to.
 #
 class logforward (
-  $package_name   = $::logforward::params::package_name,
-  $package_ensure = $::logforward::params::package_ensure,
-  $service_name   = $::logforward::params::service_name,
-  $service_ensure = $::logforward::params::service_ensure,
-  $confdir        = $::logforward::params::confdir,
-  $conffile       = $::logforward::params::conffile,
-  $ssl_cert       = $::logforward::params::ssl_cert,
-  $ssl_key        = $::logforward::params::ssl_key,
+  $package_name    = $::logforward::params::package_name,
+  $package_ensure  = $::logforward::params::package_ensure,
+  $service_name    = $::logforward::params::service_name,
+  $service_ensure  = $::logforward::params::service_ensure,
+  $confdir         = $::logforward::params::confdir,
+  $conffile        = $::logforward::params::conffile,
+  $ssl_cert        = $::logforward::params::ssl_cert,
+  $ssl_key         = $::logforward::params::ssl_key,
+  $log_server_host = $::logforward::params::log_server_host,
+  $log_server_port = $::logforward::params::log_server_port,
   $package_from_provider,
 ) inherits ::logforward::params {
 

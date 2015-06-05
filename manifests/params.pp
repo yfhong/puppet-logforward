@@ -20,6 +20,9 @@ class logforward::params {
   $ssl_cert = 'logstash-forwarder.crt'
   $ssl_key = 'logstash-forwarder.key'
 
+  $log_server_host = '127.0.0.1'
+  $log_server_port = '5043'
+
   case $::operatingsystem {
     'Debian', 'Ubuntu',
     'RedHat', 'CentOS',
