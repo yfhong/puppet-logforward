@@ -10,6 +10,16 @@ class logforward::params {
   $service_name   = 'logstash-forwarder'
   $service_ensure = 'running'
 
+  $root_group = $::operatingsystem ? {
+    /(FreeBSD|Solaris)/ => 'wheel',
+    default             => 'root',
+  }
+
+  $confdir = '/etc/logstash-forwarder.d'
+  $conffile = '/etc/logstash-forwarder.conf'
+  $ssl_cert = 'logstash-forwarder.crt'
+  $ssl_key = 'logstash-forwarder.key'
+
   case $::operatingsystem {
     'Debian', 'Ubuntu',
     'RedHat', 'CentOS',

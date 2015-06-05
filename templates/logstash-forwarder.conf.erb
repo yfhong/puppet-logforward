@@ -1,0 +1,29 @@
+{
+  "network": {
+    "servers": [ "metric.4ggogo.com:5043" ],
+    "ssl certificate": "<%= ssl_cert_path %>",
+    "ssl key": "<%= ssl_key_path %>",
+    "ssl ca": "<%= ssl_cert_path %>",
+    "timeout": 15
+  },
+  "files": [
+    {
+      "paths": [
+        "/var/log/messages",
+        #"/var/log/*.log"
+      ],
+      "fields": { "type": "syslog" }
+    }
+    <%- if aggreated_logs -%>
+    <%- aggregated_logs.each do |entry| -%>
+    ,
+    {
+      "paths": [
+      "<%= entry['path'] %>"
+      ],
+      "fields": { "type": "<%= entry['type'] %>" }
+    }
+    <%- end -%>
+    <%- end -%>
+  ]
+}

@@ -5,9 +5,13 @@
 #
 class logforward::service {
 
-  service { $::logforward::service_name:
-    ensure     => running,
-    enable     => true,
+  service { 'logstash-forwarder':
+    name       => $::logforward::service_name,
+    ensure     => $::logforward::service_ensure,
+    enable     => $::logforward::service_ensure ? {
+      'running' => true,
+      'stopped' => false,
+    },
     hasstatus  => true,
     hasrestart => true,
   }
