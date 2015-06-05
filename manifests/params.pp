@@ -4,9 +4,10 @@
 # It sets variables according to platform.
 #
 class logforward::params {
-  $package_name   = 'logstash-forward'
+  $package_name   = 'logstash-forwarder'
   $package_ensure = 'present'
-  $service_name   = 'logstash-forward'
+
+  $service_name   = 'logstash-forwarder'
   $service_ensure = 'running'
 
   case $::operatingsystem {
