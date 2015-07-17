@@ -12,6 +12,18 @@
         "/var/log/messages"
       ],
       "fields": { "type": "syslog" }
+    },
+    {
+      "paths": [
+        "/var/log/audit/audit.log"
+      ],
+      "fields": { "type": "audit" }
+    },
+    {
+      "paths": [
+        "/var/log/secure"
+      ],
+      "fields": { "type": "secure" }
     }
     <%- if aggregated_logs -%>
     <%- aggregated_logs.each do |entry| -%>
