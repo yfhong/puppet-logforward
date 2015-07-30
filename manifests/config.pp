@@ -4,7 +4,7 @@
 #
 class logforward::config {
 
-  $aggregated_logs = hiera_array('logforward::aggregated_logs')
+  $aggregated_logs = hiera_array('logforward::aggregated_logs', false)
   $ssl_cert_path = "${::logforward::confdir}/${::logforward::ssl_cert}"
   $ssl_key_path = "${::logforward::params::confdir}/${::logforward::ssl_key}"
   $log_server_host = $::logforward::log_server_host
